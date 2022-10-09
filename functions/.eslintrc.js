@@ -2,30 +2,38 @@ module.exports = {
   root: true,
   env: {
     es6: true,
-    node: true,
+    node: true
   },
   extends: [
-    "eslint:recommended",
-    "plugin:import/errors",
-    "plugin:import/warnings",
-    "plugin:import/typescript",
-    "plugin:@typescript-eslint/recommended",
+    'eslint:recommended',
+    'plugin:import/errors',
+    'plugin:import/warnings',
+    'plugin:import/typescript',
+    'plugin:@typescript-eslint/recommended',
+    'standard',
+    'prettier'
   ],
-  parser: "@typescript-eslint/parser",
+  parser: '@typescript-eslint/parser',
   parserOptions: {
-    tsconfigRootDir: __dirname,
-    project: ["tsconfig.json", "tsconfig.dev.json"],
-    sourceType: "module",
+    ecmaVersion: 13,
+    sourceType: 'module',
+    ecmaFeatures: {
+      impliedStrict: true
+    },
+    tsconfigRootDir: __dirname
   },
   ignorePatterns: [
-    "/lib/**/*", // Ignore built files.
+    '/lib/**/*'
   ],
   plugins: [
-    "@typescript-eslint",
-    "import",
+    '@typescript-eslint',
+    'import'
   ],
   rules: {
-    "quotes": ["error", "double"],
-    "import/no-unresolved": 0,
   },
-};
+  settings: {
+    'import/resolver': {
+      typescript: {}
+    }
+  }
+}
