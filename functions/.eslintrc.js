@@ -2,7 +2,8 @@ module.exports = {
   root: true,
   env: {
     es6: true,
-    node: true
+    node: true,
+    "jest/globals": true
   },
   extends: [
     'eslint:recommended',
@@ -10,6 +11,8 @@ module.exports = {
     'plugin:import/warnings',
     'plugin:import/typescript',
     'plugin:@typescript-eslint/recommended',
+    "plugin:jest/recommended",
+    "plugin:jest/style",
     'standard',
     'prettier'
   ],
@@ -27,7 +30,8 @@ module.exports = {
   ],
   plugins: [
     '@typescript-eslint',
-    'import'
+    'import',
+    'jest'
   ],
   rules: {
   },
