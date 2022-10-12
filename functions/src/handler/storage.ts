@@ -27,7 +27,5 @@ export const notifyHandler = async (
     text: filepath
   }
   await chat.postMessage(arg)
-  logger.info('media link: ', object.mediaLink)
-  logger.info('self link: ', object.selfLink)
-  logger.info('name: ', object.name)
+  logger.info('fetched file: ', filepath)
 }
