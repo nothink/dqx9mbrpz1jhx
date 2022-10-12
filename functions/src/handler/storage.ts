@@ -2,10 +2,9 @@ import * as functions from 'firebase-functions/v1'
 import { App } from '@slack/bolt'
 import { ChatPostMessageArguments } from '@slack/web-api'
 
-import { Info } from '../info'
+import { FunctionInfo, Logger } from '../globals'
 
 const config = functions.config()
-const logger = functions.logger
 
 const boltApp = new App({
   token: config.slack.bot_token,
@@ -23,9 +22,9 @@ export const notifyHandler = async (
   const filepath = `https://storage.googleapis.com/${object.bucket}/${object.name}`
   const chat = boltApp.client.chat
   const arg: ChatPostMessageArguments = {
-    channel: Info.RESOURCE_CHANNEL_ID,
+    channel: FunctionInfo.RESOURCE_CHANNEL_ID,
     text: filepath
   }
   await chat.postMessage(arg)
-  logger.info('fetched file: ', filepath)
+  Logger.info('fetched file: ', filepath)
 }

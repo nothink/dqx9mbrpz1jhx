@@ -3,9 +3,9 @@ import cors from 'cors'
 import * as functions from 'firebase-functions/v1'
 
 import { fetchDqx9mbrpz1jhx } from '../utils/fetch'
+import { Logger } from '../globals'
 
 const corsHandler = cors({ origin: true })
-const logger = functions.logger
 
 /**
  * HTTPS Handler for Firebase Cloud Functions.
@@ -28,7 +28,7 @@ export const dqx9mbrpz1jhxHandler = (
       }
       res.sendStatus(201)
     } else {
-      logger.warn(req)
+      Logger.warn(req)
       res.sendStatus(405)
     }
   })

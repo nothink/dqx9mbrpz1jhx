@@ -1,6 +1,7 @@
 {
   "name": "functions",
   "scripts": {
+    "clean": "rimraf lib/*",
     "lint": "eslint --ext .js,.ts .",
     "lint:fix": "eslint --fix --ext .js,.ts .",
     "format": "prettier --write src",
@@ -35,6 +36,7 @@
     "eslint-plugin-promise": "6.0.1",
     "firebase-functions-test": "2.4.0",
     "prettier": "2.7.1",
+    "rimraf": "3.0.2",
     "typescript": "4.8.4"
   },
   "private": true
