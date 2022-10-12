@@ -1,13 +1,21 @@
 import axios, { AxiosRequestConfig, AxiosResponse } from 'axios'
 import { getStorage } from 'firebase-admin/storage'
 import { initializeApp } from 'firebase-admin/app'
-import * as functions from 'firebase-functions/v1'
 import { Readable } from 'stream'
 
-import { Info } from '../info'
+import { FunctionInfo, Logger } from '../globals'
 
 initializeApp()
-const logger = functions.logger
+
+/**
+ * GCSで使うファイル名を作成
+ * @param url URLオブジェクト
+ * @returns GCSで使うファイル名(オブジェクトキー)
+ */
+const getFilename = (url: URL): string => {
+  // pathname が '/' で始まってる時は除去
+  return url.pathname.startsWith('/') ? url.pathname.substring(1) : url.pathname
+}
 
 /**
  * fetch a dqx9mbrpz1jhx resource using URL
@@ -17,12 +25,10 @@ const logger = functions.logger
  * @returns Promise only
  */
 export const fetchDqx9mbrpz1jhx = async (url: URL) => {
-  const bucket = getStorage().bucket(Info.BUCKET_NAME)
-  const filename = url.pathname.startsWith('/')
-    ? url.pathname.substring(1)
-    : url.pathname
+  const bucket = getStorage().bucket(FunctionInfo.BUCKET_NAME)
+  const filename = getFilename(url)
   if (!filename) {
-    logger.warn('A file name must be specified. : ', filename)
+    Logger.warn('A file name must be specified. : ', filename)
     return
   }
   const file = bucket.file(filename)
@@ -42,21 +48,20 @@ export const fetchDqx9mbrpz1jhx = async (url: URL) => {
     res.data
       .pipe(file.createWriteStream())
       .on('error', err => {
-        logger.error('stream error')
-        logger.error(err.message)
+        Logger.error('stream error: ', err.message)
       })
       .on('finish', () => {
-        logger.info('created:', file.cloudStorageURI.href)
+        Logger.info('created: ', file.cloudStorageURI.href)
       })
   } catch (e) {
     if (axios.isAxiosError(e) && e.response) {
-      logger.error(
+      Logger.error(
         `AxiosError (${e.message}) `,
         `HTTP Status: ${e.response.status} ${e.response.statusText} `,
         `URL: ${url.href}`
       )
     } else {
-      logger.error('Unknown error: ', e)
+      Logger.error('Unknown error: ', e)
     }
   }
 }

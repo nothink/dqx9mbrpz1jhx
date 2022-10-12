@@ -1,5 +1,14 @@
-export class Info {
+import * as functions from 'firebase-functions/v1'
 
+/**
+ * Global logger
+ */
+export const Logger = functions.logger
+
+/**
+ * Global variables for this Cloud Functions
+ */
+export class FunctionInfo {
   // system specifics
   /** specific system name */
   static readonly NAME = 'dqx9mbrpz1jhx'
