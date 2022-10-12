@@ -2,6 +2,8 @@ import * as functions from 'firebase-functions/v1'
 import { App } from '@slack/bolt'
 import { ChatPostMessageArguments } from '@slack/web-api'
 
+import { Info } from '../info'
+
 const config = functions.config()
 const logger = functions.logger
 
@@ -10,8 +12,6 @@ const boltApp = new App({
   signingSecret: config.slack.signing_secret,
   processBeforeResponse: true
 })
-
-const RESOURCE_CHANNEL_ID = 'C02FSAAA8AF'
 
 /**
  * Cloud Storage Handler
@@ -23,7 +23,7 @@ export const notifyHandler = async (
   const filepath = `https://storage.googleapis.com/${object.bucket}/${object.name}`
   const chat = boltApp.client.chat
   const arg: ChatPostMessageArguments = {
-    channel: RESOURCE_CHANNEL_ID,
+    channel: Info.RESOURCE_CHANNEL_ID,
     text: filepath
   }
   await chat.postMessage(arg)
