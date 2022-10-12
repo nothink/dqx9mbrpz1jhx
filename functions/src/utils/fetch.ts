@@ -4,6 +4,8 @@ import { initializeApp } from 'firebase-admin/app'
 import * as functions from 'firebase-functions/v1'
 import { Readable } from 'stream'
 
+import { Info } from '../info'
+
 initializeApp()
 const logger = functions.logger
 
@@ -15,7 +17,7 @@ const logger = functions.logger
  * @returns Promise only
  */
 export const fetchDqx9mbrpz1jhx = async (url: URL) => {
-  const bucket = getStorage().bucket('dqx9mbrpz1jhx')
+  const bucket = getStorage().bucket(Info.BUCKET_NAME)
   const filename = url.pathname.startsWith('/')
     ? url.pathname.substring(1)
     : url.pathname
