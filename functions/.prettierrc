@@ -4,5 +4,11 @@
   "useTabs": false,
   "singleQuote": true,
   "arrowParens": "avoid",
-  "trailingComma": "none"
+  "trailingComma": "none",
+  "importOrderSeparation": true,
+  "importOrderSortSpecifiers": true,
+  "importOrderParserPlugins": [
+    "typescript",
+    "jsx"
+  ]
 }

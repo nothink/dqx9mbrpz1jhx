@@ -1,8 +1,7 @@
-import * as functions from 'firebase-functions/v1'
+import { FunctionInfo, Logger } from '../globals'
 import { App } from '@slack/bolt'
 import { ChatPostMessageArguments } from '@slack/web-api'
-
-import { FunctionInfo, Logger } from '../globals'
+import * as functions from 'firebase-functions/v1'
 
 const config = functions.config()
 

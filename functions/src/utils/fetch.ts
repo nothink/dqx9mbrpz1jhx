@@ -1,21 +1,7 @@
+import { Logger } from '../globals'
+import { File } from '@google-cloud/storage'
 import axios, { AxiosRequestConfig, AxiosResponse } from 'axios'
-import { getStorage } from 'firebase-admin/storage'
-import { initializeApp } from 'firebase-admin/app'
 import { Readable } from 'stream'
-
-import { FunctionInfo, Logger } from '../globals'
-
-initializeApp()
-
-/**
- * GCSで使うファイル名を作成
- * @param url URLオブジェクト
- * @returns GCSで使うファイル名(オブジェクトキー)
- */
-const getFilename = (url: URL): string => {
-  // pathname が '/' で始まってる時は除去
-  return url.pathname.startsWith('/') ? url.pathname.substring(1) : url.pathname
-}
 
 /**
  * fetch a dqx9mbrpz1jhx resource using URL
@@ -24,19 +10,7 @@ const getFilename = (url: URL): string => {
  * @param url URL objects under https://dqx9mbrpz1jhx.cloudfront.net/
  * @returns Promise only
  */
-export const fetchDqx9mbrpz1jhx = async (url: URL) => {
-  const bucket = getStorage().bucket(FunctionInfo.BUCKET_NAME)
-  const filename = getFilename(url)
-  if (!filename) {
-    Logger.warn('A file name must be specified. : ', filename)
-    return
-  }
-  const file = bucket.file(filename)
-  const [exists] = await file.exists()
-  if (exists) {
-    return
-  }
-
+export const fetchDqx9mbrpz1jhx = async (url: URL, file: File) => {
   try {
     const options: AxiosRequestConfig = {
       method: 'GET',
