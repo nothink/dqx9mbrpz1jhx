@@ -1,8 +1,7 @@
-import * as functions from 'firebase-functions/v1'
-
+import { FunctionInfo } from './globals'
 import { dqx9mbrpz1jhxHandler } from './handler/https'
 import { notifyHandler } from './handler/storage'
-import { FunctionInfo } from './globals'
+import * as functions from 'firebase-functions/v1'
 
 // dqx9mbrpz1jhx
 export const dqx9mbrpz1jhx = functions
