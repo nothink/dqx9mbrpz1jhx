@@ -17,7 +17,7 @@ export const dqx9mbrpz1jhx = functions
   .https.onRequest(dqx9mbrpz1jhxHandler)
 
 // notify
-export const notifyV1 = functions
+export const notify = functions
   .region('asia-northeast1')
   .runWith({
     memory: FunctionInfo.MEMORY,
@@ -27,4 +27,4 @@ export const notifyV1 = functions
   .object()
   .onFinalize(notifyV1Handler)
 
-// export const notifyV2 = onObjectFinalized(FunctionInfo.BUCKET_NAME, notifyV2Handler)
+// export const notifyV2 = onObjectFinalized({ region: 'asia-northeast1', bucket: FunctionInfo.BUCKET_NAME}, notifyV2Handler)
