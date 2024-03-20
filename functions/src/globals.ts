@@ -1,9 +1,9 @@
-import * as functions from 'firebase-functions/v1'
+import { GlobalOptions, logger } from 'firebase-functions/v2'
 
 /**
  * Global logger
  */
-export const Logger = functions.logger
+export const Logger = logger
 
 /**
  * Global variables for this Cloud Functions
@@ -16,8 +16,14 @@ export class FunctionInfo {
   static readonly BUCKET_NAME = this.NAME
   /** Slack resource channnel ID for send notifications to */
   static readonly RESOURCE_CHANNEL_ID = 'C02FSAAA8AF'
+}
 
-  // instance specifics
-  static readonly MEMORY = '256MB'
-  static readonly TIMEOUT = 540
+/**
+ * v2 global options.
+ */
+export const Options: GlobalOptions = {
+  region: 'asia-northeast1',
+  memory: '128MiB',
+  timeoutSeconds: 240,
+  maxInstances: 2
 }
