@@ -41,11 +41,11 @@ devDependencies:
     specifier: 17.0.0
     version: 17.0.0(eslint-plugin-import@2.26.0)(eslint-plugin-n@15.3.0)(eslint-plugin-promise@6.1.1)(eslint@8.25.0)
   eslint-import-resolver-typescript:
-    specifier: 3.5.1
-    version: 3.5.1(eslint-plugin-import@2.26.0)(eslint@8.25.0)
+    specifier: 3.6.1
+    version: 3.6.1(@typescript-eslint/parser@5.40.1)(eslint-plugin-import@2.26.0)(eslint@8.25.0)
   eslint-plugin-import:
     specifier: 2.26.0
-    version: 2.26.0(@typescript-eslint/parser@5.40.1)(eslint-import-resolver-typescript@3.5.1)(eslint@8.25.0)
+    version: 2.26.0(@typescript-eslint/parser@5.40.1)(eslint-import-resolver-typescript@3.6.1)(eslint@8.25.0)
   eslint-plugin-n:
     specifier: 15.3.0
     version: 15.3.0(eslint@8.25.0)
@@ -886,11 +886,6 @@ packages:
     dependencies:
       '@nodelib/fs.scandir': 2.1.5
       fastq: 1.17.1
-    dev: true
-
-  /@pkgr/core@0.1.1:
-    resolution: {integrity: sha512-cq8o4cWH0ibXh9VGi5P20Tu9XF/0fFXl9EUinr9QfTM7a7p0oTA4iJRCQWppXR1Pg8dSM0UCItCkPwsk9qWWYA==}
-    engines: {node: ^12.20.0 || ^14.18.0 || >=16.0.0}
     dev: true
 
   /@protobufjs/aspromise@1.1.2:
@@ -2295,7 +2290,7 @@ packages:
       eslint-plugin-promise: ^6.0.0
     dependencies:
       eslint: 8.25.0
-      eslint-plugin-import: 2.26.0(@typescript-eslint/parser@5.40.1)(eslint-import-resolver-typescript@3.5.1)(eslint@8.25.0)
+      eslint-plugin-import: 2.26.0(@typescript-eslint/parser@5.40.1)(eslint-import-resolver-typescript@3.6.1)(eslint@8.25.0)
       eslint-plugin-n: 15.3.0(eslint@8.25.0)
       eslint-plugin-promise: 6.1.1(eslint@8.25.0)
     dev: true
@@ -2310,9 +2305,9 @@ packages:
       - supports-color
     dev: true
 
-  /eslint-import-resolver-typescript@3.5.1(eslint-plugin-import@2.26.0)(eslint@8.25.0):
-    resolution: {integrity: sha512-U7LUjNJPYjNsHvAUAkt/RU3fcTSpbllA0//35B4eLYTX74frmOepbt7F7J3D1IGtj9k21buOpaqtDd4ZlS/BYQ==}
-    engines: {node: ^12.20.0 || ^14.18.0 || >=16.0.0}
+  /eslint-import-resolver-typescript@3.6.1(@typescript-eslint/parser@5.40.1)(eslint-plugin-import@2.26.0)(eslint@8.25.0):
+    resolution: {integrity: sha512-xgdptdoi5W3niYeuQxKmzVDTATvLYqhpwmykwsh7f6HIOStGWEIL9iqZgQDF9u9OEzrRwR8no5q2VT+bjAujTg==}
+    engines: {node: ^14.18.0 || >=16.0.0}
     peerDependencies:
       eslint: '*'
       eslint-plugin-import: '*'
@@ -2320,17 +2315,20 @@ packages:
       debug: 4.3.4
       enhanced-resolve: 5.16.0
       eslint: 8.25.0
-      eslint-plugin-import: 2.26.0(@typescript-eslint/parser@5.40.1)(eslint-import-resolver-typescript@3.5.1)(eslint@8.25.0)
+      eslint-module-utils: 2.8.1(@typescript-eslint/parser@5.40.1)(eslint-import-resolver-node@0.3.9)(eslint-import-resolver-typescript@3.6.1)(eslint@8.25.0)
+      eslint-plugin-import: 2.26.0(@typescript-eslint/parser@5.40.1)(eslint-import-resolver-typescript@3.6.1)(eslint@8.25.0)
+      fast-glob: 3.3.2
       get-tsconfig: 4.7.3
-      globby: 13.2.2
       is-core-module: 2.13.1
       is-glob: 4.0.3
-      synckit: 0.8.8
     transitivePeerDependencies:
+      - '@typescript-eslint/parser'
+      - eslint-import-resolver-node
+      - eslint-import-resolver-webpack
       - supports-color
     dev: true
 
-  /eslint-module-utils@2.8.1(@typescript-eslint/parser@5.40.1)(eslint-import-resolver-node@0.3.9)(eslint-import-resolver-typescript@3.5.1)(eslint@8.25.0):
+  /eslint-module-utils@2.8.1(@typescript-eslint/parser@5.40.1)(eslint-import-resolver-node@0.3.9)(eslint-import-resolver-typescript@3.6.1)(eslint@8.25.0):
     resolution: {integrity: sha512-rXDXR3h7cs7dy9RNpUlQf80nX31XWJEyGq1tRMo+6GsO5VmTe4UTwtmonAD4ZkAsrfMVDA2wlGJ3790Ys+D49Q==}
     engines: {node: '>=4'}
     peerDependencies:
@@ -2355,7 +2353,7 @@ packages:
       debug: 3.2.7
       eslint: 8.25.0
       eslint-import-resolver-node: 0.3.9
-      eslint-import-resolver-typescript: 3.5.1(eslint-plugin-import@2.26.0)(eslint@8.25.0)
+      eslint-import-resolver-typescript: 3.6.1(@typescript-eslint/parser@5.40.1)(eslint-plugin-import@2.26.0)(eslint@8.25.0)
     transitivePeerDependencies:
       - supports-color
     dev: true
@@ -2371,7 +2369,7 @@ packages:
       regexpp: 3.2.0
     dev: true
 
-  /eslint-plugin-import@2.26.0(@typescript-eslint/parser@5.40.1)(eslint-import-resolver-typescript@3.5.1)(eslint@8.25.0):
+  /eslint-plugin-import@2.26.0(@typescript-eslint/parser@5.40.1)(eslint-import-resolver-typescript@3.6.1)(eslint@8.25.0):
     resolution: {integrity: sha512-hYfi3FXaM8WPLf4S1cikh/r4IxnO6zrhZbEGz2b660EJRbuxgpDS5gkCuYgGWg2xxh2rBuIr4Pvhve/7c31koA==}
     engines: {node: '>=4'}
     peerDependencies:
@@ -2388,7 +2386,7 @@ packages:
       doctrine: 2.1.0
       eslint: 8.25.0
       eslint-import-resolver-node: 0.3.9
-      eslint-module-utils: 2.8.1(@typescript-eslint/parser@5.40.1)(eslint-import-resolver-node@0.3.9)(eslint-import-resolver-typescript@3.5.1)(eslint@8.25.0)
+      eslint-module-utils: 2.8.1(@typescript-eslint/parser@5.40.1)(eslint-import-resolver-node@0.3.9)(eslint-import-resolver-typescript@3.6.1)(eslint@8.25.0)
       has: 1.0.4
       is-core-module: 2.13.1
       is-glob: 4.0.3
@@ -3015,17 +3013,6 @@ packages:
       ignore: 5.3.1
       merge2: 1.4.1
       slash: 3.0.0
-    dev: true
-
-  /globby@13.2.2:
-    resolution: {integrity: sha512-Y1zNGV+pzQdh7H39l9zgB4PJqjRNqydvdYCDG4HFXM4XuvSaQQlEc91IU1yALL8gUTDomgBAfz3XJdmUS+oo0w==}
-    engines: {node: ^12.20.0 || ^14.13.1 || >=16.0.0}
-    dependencies:
-      dir-glob: 3.0.1
-      fast-glob: 3.3.2
-      ignore: 5.3.1
-      merge2: 1.4.1
-      slash: 4.0.0
     dev: true
 
   /google-auth-library@9.7.0:
@@ -4846,11 +4833,6 @@ packages:
     engines: {node: '>=8'}
     dev: true
 
-  /slash@4.0.0:
-    resolution: {integrity: sha512-3dOsAHXXUkQTpOYcoAxLIorMTp4gIQr5IW3iVb7A7lFIp0VHhnynm9izx6TssdrIcVIESAlVjtnO2K8bg+Coew==}
-    engines: {node: '>=12'}
-    dev: true
-
   /source-map-support@0.5.13:
     resolution: {integrity: sha512-SHSKFHadjVA5oR4PPqhtAVdcBWwRYVd6g6cAXnIbRiIwc2EhPrTuKUBdSLvlEKyIP3GCf89fltvcZiP9MMFA1w==}
     dependencies:
@@ -5026,14 +5008,6 @@ packages:
   /supports-preserve-symlinks-flag@1.0.0:
     resolution: {integrity: sha512-ot0WnXS9fgdkgIcePe6RHNk1WA8+muPa6cSjeR3V8K27q9BB1rTE3R1p7Hv0z1ZyAc8s6Vvv8DIyWf681MAt0w==}
     engines: {node: '>= 0.4'}
-
-  /synckit@0.8.8:
-    resolution: {integrity: sha512-HwOKAP7Wc5aRGYdKH+dw0PRRpbO841v2DENBtjnR5HFWoiNByAl7vrx3p0G/rCyYXQsrxqtX48TImFtPcIHSpQ==}
-    engines: {node: ^14.18.0 || >=16.0.0}
-    dependencies:
-      '@pkgr/core': 0.1.1
-      tslib: 2.6.2
-    dev: true
 
   /tapable@2.2.1:
     resolution: {integrity: sha512-GNzQvQTOIP6RyTfE2Qxb8ZVlNmw0n88vp1szwWRimP02mnTsx3Wtn5qRdqY9w2XduFNUgvOwhNnQsjwCp+kqaQ==}
@@ -5415,3 +5389,4 @@ packages:
   /yocto-queue@0.1.0:
     resolution: {integrity: sha512-rVksvsnNCdJ/ohGc6xgPwyN8eheCxsiLM8mxuE/t/mOVqJewPuO1miLpTHQiRgTKCLexL4MeAFVagts7HmNZ2Q==}
     engines: {node: '>=10'}
+    requiresBuild: true
