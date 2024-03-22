@@ -35,8 +35,8 @@ devDependencies:
     specifier: 8.25.0
     version: 8.25.0
   eslint-config-prettier:
-    specifier: 8.5.0
-    version: 8.5.0(eslint@8.25.0)
+    specifier: 8.10.0
+    version: 8.10.0(eslint@8.25.0)
   eslint-config-standard:
     specifier: 17.0.0
     version: 17.0.0(eslint-plugin-import@2.26.0)(eslint-plugin-n@15.3.0)(eslint-plugin-promise@6.1.1)(eslint@8.25.0)
@@ -2277,8 +2277,8 @@ packages:
     engines: {node: '>=10'}
     dev: true
 
-  /eslint-config-prettier@8.5.0(eslint@8.25.0):
-    resolution: {integrity: sha512-obmWKLUNCnhtQRKc+tmnYuQl0pFU1ibYJQ5BGhTVB08bHe9wC8qUeG7c08dj9XX+AuPj1YSGSQIHl1pnDHZR0Q==}
+  /eslint-config-prettier@8.10.0(eslint@8.25.0):
+    resolution: {integrity: sha512-SM8AMJdeQqRYT9O9zguiruQZaN7+z+E4eAP9oiLNGKMtomwaB1E9dcgUD6ZAn/eQAb52USbvezbiljfZUhbJcg==}
     hasBin: true
     peerDependencies:
       eslint: '>=7.0.0'
@@ -5415,3 +5415,4 @@ packages:
   /yocto-queue@0.1.0:
     resolution: {integrity: sha512-rVksvsnNCdJ/ohGc6xgPwyN8eheCxsiLM8mxuE/t/mOVqJewPuO1miLpTHQiRgTKCLexL4MeAFVagts7HmNZ2Q==}
     engines: {node: '>=10'}
+    requiresBuild: true
