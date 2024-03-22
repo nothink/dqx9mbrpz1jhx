@@ -39,7 +39,7 @@ devDependencies:
     version: 8.5.0(eslint@8.25.0)
   eslint-config-standard:
     specifier: 17.0.0
-    version: 17.0.0(eslint-plugin-import@2.26.0)(eslint-plugin-n@15.3.0)(eslint-plugin-promise@6.1.1)(eslint@8.25.0)
+    version: 17.0.0(eslint-plugin-import@2.26.0)(eslint-plugin-n@15.7.0)(eslint-plugin-promise@6.1.1)(eslint@8.25.0)
   eslint-import-resolver-typescript:
     specifier: 3.5.1
     version: 3.5.1(eslint-plugin-import@2.26.0)(eslint@8.25.0)
@@ -47,8 +47,8 @@ devDependencies:
     specifier: 2.26.0
     version: 2.26.0(@typescript-eslint/parser@5.40.1)(eslint-import-resolver-typescript@3.5.1)(eslint@8.25.0)
   eslint-plugin-n:
-    specifier: 15.3.0
-    version: 15.3.0(eslint@8.25.0)
+    specifier: 15.7.0
+    version: 15.7.0(eslint@8.25.0)
   eslint-plugin-promise:
     specifier: 6.1.1
     version: 6.1.1(eslint@8.25.0)
@@ -2286,7 +2286,7 @@ packages:
       eslint: 8.25.0
     dev: true
 
-  /eslint-config-standard@17.0.0(eslint-plugin-import@2.26.0)(eslint-plugin-n@15.3.0)(eslint-plugin-promise@6.1.1)(eslint@8.25.0):
+  /eslint-config-standard@17.0.0(eslint-plugin-import@2.26.0)(eslint-plugin-n@15.7.0)(eslint-plugin-promise@6.1.1)(eslint@8.25.0):
     resolution: {integrity: sha512-/2ks1GKyqSOkH7JFvXJicu0iMpoojkwB+f5Du/1SC0PtBL+s8v30k9njRZ21pm2drKYm2342jFnGWzttxPmZVg==}
     peerDependencies:
       eslint: ^8.0.1
@@ -2296,7 +2296,7 @@ packages:
     dependencies:
       eslint: 8.25.0
       eslint-plugin-import: 2.26.0(@typescript-eslint/parser@5.40.1)(eslint-import-resolver-typescript@3.5.1)(eslint@8.25.0)
-      eslint-plugin-n: 15.3.0(eslint@8.25.0)
+      eslint-plugin-n: 15.7.0(eslint@8.25.0)
       eslint-plugin-promise: 6.1.1(eslint@8.25.0)
     dev: true
 
@@ -2402,8 +2402,8 @@ packages:
       - supports-color
     dev: true
 
-  /eslint-plugin-n@15.3.0(eslint@8.25.0):
-    resolution: {integrity: sha512-IyzPnEWHypCWasDpxeJnim60jhlumbmq0pubL6IOcnk8u2y53s5QfT8JnXy7skjHJ44yWHRb11PLtDHuu1kg/Q==}
+  /eslint-plugin-n@15.7.0(eslint@8.25.0):
+    resolution: {integrity: sha512-jDex9s7D/Qial8AGVIHq4W7NswpUD5DPDL2RH8Lzd9EloWUuvUkHfv4FRLMipH5q2UtyurorBkPeNi1wVWNh3Q==}
     engines: {node: '>=12.22.0'}
     peerDependencies:
       eslint: '>=7.0.0'
@@ -5415,3 +5415,4 @@ packages:
   /yocto-queue@0.1.0:
     resolution: {integrity: sha512-rVksvsnNCdJ/ohGc6xgPwyN8eheCxsiLM8mxuE/t/mOVqJewPuO1miLpTHQiRgTKCLexL4MeAFVagts7HmNZ2Q==}
     engines: {node: '>=10'}
+    requiresBuild: true
