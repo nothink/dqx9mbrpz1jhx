@@ -1,14 +1,14 @@
-import { StorageEvent } from 'firebase-functions/v2/storage'
 import { defineString } from 'firebase-functions/params'
+import type { StorageEvent } from 'firebase-functions/v2/storage'
 
 import { App } from '@slack/bolt'
 
-import { FunctionInfo, Logger } from '../globals'
+import { Logger, RESOURCE_CHANNEL_ID } from '../globals'
 
 // v2 config
 const slackBotToken = defineString('SLACK_BOT_TOKEN').value()
 const slackSigningSecret = defineString('SLACK_SIGNING_SECRET').value()
-const slackChannel = FunctionInfo.RESOURCE_CHANNEL_ID
+const slackChannel = RESOURCE_CHANNEL_ID
 
 const boltAppV2 = new App({
   token: slackBotToken,

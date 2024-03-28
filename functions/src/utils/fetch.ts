@@ -1,9 +1,9 @@
-import axios, { AxiosRequestConfig, AxiosResponse } from 'axios'
-import { getStorage } from 'firebase-admin/storage'
+import type { Readable } from 'node:stream'
+import axios, { type AxiosRequestConfig, type AxiosResponse } from 'axios'
 import { initializeApp } from 'firebase-admin/app'
-import { Readable } from 'stream'
+import { getStorage } from 'firebase-admin/storage'
 
-import { FunctionInfo, Logger } from '../globals'
+import { BUCKET_NAME, Logger } from '../globals'
 
 initializeApp()
 
@@ -25,7 +25,7 @@ const getFilename = (url: URL): string => {
  * @returns Promise only
  */
 export const fetchDqx9mbrpz1jhx = async (url: URL) => {
-  const bucket = getStorage().bucket(FunctionInfo.BUCKET_NAME)
+  const bucket = getStorage().bucket(BUCKET_NAME)
   const filename = getFilename(url)
   if (!filename) {
     Logger.warn('A file name must be specified. : ', filename)

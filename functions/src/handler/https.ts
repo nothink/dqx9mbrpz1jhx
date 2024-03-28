@@ -1,7 +1,7 @@
-import { Request, Response } from 'firebase-functions'
+import type { Request, Response } from 'firebase-functions'
 
-import { fetchDqx9mbrpz1jhx } from '../utils/fetch'
 import { Logger } from '../globals'
+import { fetchDqx9mbrpz1jhx } from '../utils/fetch'
 
 /**
  * HTTPS Handler for Firebase Cloud Functions.

@@ -11,8 +11,8 @@
       ],
       "predeploy": [
         "pnpm --prefix \"$RESOURCE_DIR\" install",
-        "pnpm --prefix \"$RESOURCE_DIR\" run lint",
-        "pnpm --prefix \"$RESOURCE_DIR\" run build"
+        "pnpm --prefix \"$RESOURCE_DIR\" lint",
+        "pnpm --prefix \"$RESOURCE_DIR\" build"
       ],
       "runtime": "nodejs20"
     }
