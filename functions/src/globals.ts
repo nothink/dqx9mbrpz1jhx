@@ -25,5 +25,5 @@ export const Options: GlobalOptions = {
   region: 'asia-northeast1',
   memory: '128MiB',
   timeoutSeconds: 240,
-  maxInstances: 2
+  maxInstances: 2,
 }

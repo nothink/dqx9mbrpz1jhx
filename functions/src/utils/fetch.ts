@@ -42,12 +42,12 @@ export const fetchDqx9mbrpz1jhx = async (url: URL) => {
       method: 'GET',
       responseType: 'stream',
       timeout: 600000,
-      maxContentLength: 1073741824
+      maxContentLength: 1073741824,
     }
     const res: AxiosResponse<Readable> = await axios.get(url.href, options)
     res.data
       .pipe(file.createWriteStream())
-      .on('error', err => {
+      .on('error', (err) => {
         Logger.error('stream error: ', err.message)
       })
       .on('finish', () => {

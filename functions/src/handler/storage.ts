@@ -13,7 +13,7 @@ const slackChannel = FunctionInfo.RESOURCE_CHANNEL_ID
 const boltAppV2 = new App({
   token: slackBotToken,
   signingSecret: slackSigningSecret,
-  processBeforeResponse: true
+  processBeforeResponse: true,
 })
 
 /**
@@ -25,7 +25,7 @@ export const notifyV2Handler = (event: StorageEvent) => {
   const chat = boltAppV2.client.chat
   chat.postMessage({
     channel: slackChannel,
-    text: url
+    text: url,
   })
   Logger.info('fetched file: ', url)
 }
