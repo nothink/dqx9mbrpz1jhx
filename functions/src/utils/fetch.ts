@@ -58,7 +58,7 @@ export const fetchDqx9mbrpz1jhx = async (url: URL) => {
       Logger.error(
         `AxiosError (${e.message}) `,
         `HTTP Status: ${e.response.status} ${e.response.statusText} `,
-        `URL: ${url.href}`
+        `URL: ${url.href}`,
       )
     } else {
       Logger.error('Unknown error: ', e)
