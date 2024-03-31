@@ -1,11 +1,11 @@
-import type { Readable } from 'node:stream'
-import axios, { type AxiosRequestConfig, type AxiosResponse } from 'axios'
-import { initializeApp } from 'firebase-admin/app'
-import { getStorage } from 'firebase-admin/storage'
+import type { Readable } from "node:stream";
+import axios, { type AxiosRequestConfig, type AxiosResponse } from "axios";
+import { initializeApp } from "firebase-admin/app";
+import { getStorage } from "firebase-admin/storage";
 
-import { BUCKET_NAME, Logger } from '../globals'
+import { BUCKET_NAME, Logger } from "../globals";
 
-initializeApp()
+initializeApp();
 
 /**
  * GCSで使うファイル名を作成
@@ -13,9 +13,11 @@ initializeApp()
  * @returns GCSで使うファイル名(オブジェクトキー)
  */
 const getFilename = (url: URL): string => {
-  // pathname が '/' で始まってる時は除去
-  return url.pathname.startsWith('/') ? url.pathname.substring(1) : url.pathname
-}
+	// pathname が '/' で始まってる時は除去
+	return url.pathname.startsWith("/")
+		? url.pathname.substring(1)
+		: url.pathname;
+};
 
 /**
  * fetch a dqx9mbrpz1jhx resource using URL
@@ -25,43 +27,43 @@ const getFilename = (url: URL): string => {
  * @returns Promise only
  */
 export const fetchDqx9mbrpz1jhx = async (url: URL) => {
-  const bucket = getStorage().bucket(BUCKET_NAME)
-  const filename = getFilename(url)
-  if (!filename) {
-    Logger.warn('A file name must be specified. : ', filename)
-    return
-  }
-  const file = bucket.file(filename)
-  const [exists] = await file.exists()
-  if (exists) {
-    return
-  }
+	const bucket = getStorage().bucket(BUCKET_NAME);
+	const filename = getFilename(url);
+	if (!filename) {
+		Logger.warn("A file name must be specified. : ", filename);
+		return;
+	}
+	const file = bucket.file(filename);
+	const [exists] = await file.exists();
+	if (exists) {
+		return;
+	}
 
-  try {
-    const options: AxiosRequestConfig = {
-      method: 'GET',
-      responseType: 'stream',
-      timeout: 600000,
-      maxContentLength: 1073741824,
-    }
-    const res: AxiosResponse<Readable> = await axios.get(url.href, options)
-    res.data
-      .pipe(file.createWriteStream())
-      .on('error', (err) => {
-        Logger.error('stream error: ', err.message)
-      })
-      .on('finish', () => {
-        Logger.info('created: ', file.cloudStorageURI.href)
-      })
-  } catch (e) {
-    if (axios.isAxiosError(e) && e.response) {
-      Logger.error(
-        `AxiosError (${e.message}) `,
-        `HTTP Status: ${e.response.status} ${e.response.statusText} `,
-        `URL: ${url.href}`,
-      )
-    } else {
-      Logger.error('Unknown error: ', e)
-    }
-  }
-}
+	try {
+		const options: AxiosRequestConfig = {
+			method: "GET",
+			responseType: "stream",
+			timeout: 600000,
+			maxContentLength: 1073741824,
+		};
+		const res: AxiosResponse<Readable> = await axios.get(url.href, options);
+		res.data
+			.pipe(file.createWriteStream())
+			.on("error", (err) => {
+				Logger.error("stream error: ", err.message);
+			})
+			.on("finish", () => {
+				Logger.info("created: ", file.cloudStorageURI.href);
+			});
+	} catch (e) {
+		if (axios.isAxiosError(e) && e.response) {
+			Logger.error(
+				`AxiosError (${e.message}) `,
+				`HTTP Status: ${e.response.status} ${e.response.statusText} `,
+				`URL: ${url.href}`,
+			);
+		} else {
+			Logger.error("Unknown error: ", e);
+		}
+	}
+};
