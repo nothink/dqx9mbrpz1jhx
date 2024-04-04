@@ -2,13 +2,14 @@ import type { Readable } from "node:stream";
 import axios, { type AxiosRequestConfig, type AxiosResponse } from "axios";
 import { initializeApp } from "firebase-admin/app";
 import { getStorage } from "firebase-admin/storage";
+import { logger } from "firebase-functions/v2";
 
-import { BUCKET_NAME, Logger } from "../globals";
+import { BUCKET_NAME } from "../globals";
 
 initializeApp();
 
 /**
- * GCSで使うファイル名を作成
+ * GCSで使うファイル名(オブジェクトキー)を作成
  * @param url URLオブジェクト
  * @returns GCSで使うファイル名(オブジェクトキー)
  */
@@ -30,7 +31,7 @@ export const fetchDqx9mbrpz1jhx = async (url: URL) => {
 	const bucket = getStorage().bucket(BUCKET_NAME);
 	const filename = getFilename(url);
 	if (!filename) {
-		Logger.warn("A file name must be specified. : ", filename);
+		logger.warn("A file name must be specified. : ", filename);
 		return;
 	}
 	const file = bucket.file(filename);
@@ -50,20 +51,20 @@ export const fetchDqx9mbrpz1jhx = async (url: URL) => {
 		res.data
 			.pipe(file.createWriteStream())
 			.on("error", (err) => {
-				Logger.error("stream error: ", err.message);
+				logger.error("stream error: ", err.message);
 			})
 			.on("finish", () => {
-				Logger.info("created: ", file.cloudStorageURI.href);
+				logger.info("created: ", file.cloudStorageURI.href);
 			});
 	} catch (e) {
 		if (axios.isAxiosError(e) && e.response) {
-			Logger.error(
+			logger.error(
 				`AxiosError (${e.message}) `,
 				`HTTP Status: ${e.response.status} ${e.response.statusText} `,
 				`URL: ${url.href}`,
 			);
 		} else {
-			Logger.error("Unknown error: ", e);
+			logger.error("Unknown error: ", e);
 		}
 	}
 };

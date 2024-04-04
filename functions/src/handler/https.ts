@@ -1,6 +1,6 @@
 import type { Request, Response } from "firebase-functions";
+import { logger } from "firebase-functions/v2";
 
-import { Logger } from "../globals";
 import { fetchDqx9mbrpz1jhx } from "../utils/fetch";
 
 /**
@@ -20,7 +20,7 @@ export const dqx9mbrpz1jhxHandler = async (req: Request, res: Response) => {
 		}
 		res.sendStatus(202);
 	} else {
-		Logger.warn(req);
+		logger.warn(req);
 		res.sendStatus(405);
 	}
 };
